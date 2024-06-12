@@ -20,8 +20,12 @@ class Dimension(models.Model):
     class Meta:
         ordering = ['name']
 
+    # def __str__(self):
+    #     return f"Company:{self.company}, Parent:{self.parent}, Name:{self.name}, Has_children:{self.has_children}"
+
     def __str__(self):
-        return self.name
+        return f"id: {self.id}, Company: {self.company.name}, Parent: {self.parent.name if self.parent else 'None'}, Name: {self.name}, Has Children: {self.has_children}"
+
 
     def save(self, *args, **kwargs):
         raise Exception('Editing Dimensions is disabled for this assignment')

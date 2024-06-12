@@ -4,6 +4,8 @@ from django.db import connection, reset_queries
 from django.core.management.base import BaseCommand, CommandError
 
 from dimensions.challenge import list_children, list_hierarchy
+# from dimensions.challenge import list_children
+
 from dimensions.models import Company, Dimension
 
 
@@ -15,7 +17,6 @@ class Command(BaseCommand):
 
         reset_queries()
         queries_before = len(connection.queries)
-
         self.check_list_children()
         children_num_queries = len(connection.queries) - queries_before
         print(f'Used {children_num_queries} queries', end='\n\n')
@@ -35,10 +36,14 @@ class Command(BaseCommand):
             response = list_children(dim_id)
             if expected != response:
                 print(f'\n Incorrect response for {expected[0]}.\n - EXPECTED: {expected}\n - RECEIVED: {response}')
+                # break
             else:
                 num_correct += 1
+                print(f'\n correct response for {expected[0]}.\n - EXPECTED: {expected}\n - RECEIVED: {response}')
+                # break
 
         print(f'---\nRESULTS: {num_correct} out of {len(expecteds)} correct.')
+
 
     def check_list_hierarchy(self):
         print('Checking list_hierarchy()...')
@@ -50,3 +55,4 @@ class Command(BaseCommand):
             print(f'\n Incorrect response.\n - EXPECTED: {expected}\n - RECEIVED: {response}\n---\nRESULTS: Fail.')
         else:
             print(f'\n{len(response)} out of {len(expected)} correct.\n---\nRESULTS: Success.')
+            print(f'\n correct response.\n - EXPECTED: {expected}\n - RECEIVED: {response}\n---\nRESULTS: Success.')
