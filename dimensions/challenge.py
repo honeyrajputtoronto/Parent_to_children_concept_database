@@ -1,4 +1,5 @@
 from .models import Company, Dimension
+from django.db.models import Prefetch
 
 
 def collect_parent_to_children(all_dimension):
@@ -27,13 +28,9 @@ def traverse(dimensions, parent_to_children, level=0):
 
 def list_children(root_id):
     try:
-
         root_dimension = Dimension.objects.select_related('parent','company').get(id=root_id)
-
         all_dimension = Dimension.objects.select_related('parent','company').all()
-
         parent_to_children = collect_parent_to_children(all_dimension)
-
         result = traverse(root_dimension, parent_to_children)
         return result
 
@@ -45,15 +42,10 @@ def list_children(root_id):
 def list_hierarchy(root_id):
     try:
         company = Company.objects.get(id=root_id)
-
         dimensions = Dimension.objects.filter(company=company).select_related('parent','company')
-
         parent_to_children = collect_parent_to_children(dimensions)
-
         top_level_dimensions = [dim for dim in dimensions if dim.parent_id== None]
-
         result = traverse(top_level_dimensions, parent_to_children)
-
         return result
 
     except company.DoesNotExist:

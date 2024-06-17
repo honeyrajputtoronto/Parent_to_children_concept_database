@@ -7,6 +7,17 @@ from dimensions.challenge import list_children, list_hierarchy
 # from dimensions.challenge import list_children
 
 from dimensions.models import Company, Dimension
+import time
+
+def timer(func):
+    def wrapper(*args, **kwargs):
+        input = time.time()
+        time.sleep(1)
+        res = func(*args, **kwargs)
+        output = time.time()
+        print(f'------------------time------------:{(output-input)}')
+        return res
+    return wrapper
 
 
 class Command(BaseCommand):
@@ -25,7 +36,7 @@ class Command(BaseCommand):
         list_hierarchy_num_queries = len(connection.queries) - children_num_queries
         print(f'Used {list_hierarchy_num_queries} queries', end='\n\n')
 
-
+    @timer
     def check_list_children(self):
         print('Checking list_children()...')
         with open(f'{self.base_dir}list_children_expected.pickle', mode='rb') as f:
@@ -36,15 +47,13 @@ class Command(BaseCommand):
             response = list_children(dim_id)
             if expected != response:
                 print(f'\n Incorrect response for {expected[0]}.\n - EXPECTED: {expected}\n - RECEIVED: {response}')
-                # break
             else:
                 num_correct += 1
                 print(f'\n correct response for {expected[0]}.\n - EXPECTED: {expected}\n - RECEIVED: {response}')
-                # break
 
         print(f'---\nRESULTS: {num_correct} out of {len(expecteds)} correct.')
 
-
+    @timer
     def check_list_hierarchy(self):
         print('Checking list_hierarchy()...')
         with open(f'{self.base_dir}list_hierarchy_expected.pickle', mode='rb') as f:
