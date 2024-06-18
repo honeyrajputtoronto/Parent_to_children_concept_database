@@ -120,6 +120,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 LOGGING = {
     'version': 1,
     'filters': {
@@ -141,3 +142,11 @@ LOGGING = {
         }
     }
 }
+
+
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',  # or 'django.core.cache.backends.memcached.MemcachedCache' for production
+#         'LOCATION': 'unique-snowflake',
+#     }
+# }

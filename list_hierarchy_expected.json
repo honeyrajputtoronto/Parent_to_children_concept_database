@@ -1,0 +1,28 @@
+{
+    "list_data": [
+        "Account",
+        "\tBalance Sheet",
+        "\t\tAssets",
+        "\t\tEquity",
+        "\t\tLiabilities",
+        "\tIncome Statement",
+        "\t\tExpense",
+        "\t\tNet Income",
+        "\t\tRevenue",
+        "\t\t\tProduct Revenue",
+        "\t\t\tServices Revenue",
+        "Department",
+        "\tAll Departments",
+        "\t\tGeneral & Administrative",
+        "\t\t\tFinance & Accounting",
+        "\t\t\tHuman Resources",
+        "\t\t\tOperations",
+        "\t\tMarketing",
+        "\t\tProduct",
+        "\t\t\tDesign",
+        "\t\t\tEngineering",
+        "Scenario",
+        "\tActuals",
+        "\tBudget"
+    ]
+}

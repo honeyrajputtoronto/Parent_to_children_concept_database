@@ -52,3 +52,26 @@ related_dimensions = find_related_dimensions(dimensions, root_pk)
 
 for dimension in related_dimensions:
     print(dimension)
+
+
+parent_to_children.....
+{None: [
+    <Dimension: id: 1, Company: Sample Co, Parent: None, Name: Account, Has Children: True>,
+    <Dimension: id: 15, Company: Sample Co, Parent: None, Name: Department, Has Children: True>,
+    <Dimension: id: 12, Company: Sample Co, Parent: None, Name: Scenario, Has Children: True>
+    ],
+ 12: [
+     <Dimension: id: 13, Company: Sample Co, Parent: Scenario, Name: Actuals, Has Children: False>,
+     <Dimension: id: 14, Company: Sample Co, Parent: Scenario, Name: Budget, Has Children: False>
+     ],
+ 15: [
+     <Dimension: id: 16, Company: Sample Co, Parent: Department, Name: All Departments, Has Children: True>
+      ],
+ 8: [
+     <Dimension: id: 9, Company: Sample Co, Parent: Balance Sheet, Name: Assets, Has Children: False>, <Dimension: id: 11, Company: Sample Co, Parent: Balance Sheet, Name: Equity, Has Children: False>, <Dimension: id: 10, Company: Sample Co, Parent: Balance Sheet, Name: Liabilities, Has Children: False>], 1: [<Dimension: id: 8, Company: Sample Co, Parent: Account, Name: Balance Sheet, Has Children: True>, <Dimension: id: 2, Company: Sample Co, Parent: Account, Name: Income Statement, Has Children: True>], 18: [<Dimension: id: 20, Company: Sample Co, Parent: Product, Name: Design, Has Children: False>, <Dimension: id: 19, Company: Sample Co, Parent: Product, Name: Engineering, Has Children: False>], 2: [<Dimension: id: 6, Company: Sample Co, Parent: Income Statement, Name: Expense, Has Children: False>, <Dimension: id: 7, Company: Sample Co, Parent: Income Statement, Name: Net Income, Has Children: False>, <Dimension: id: 3, Company: Sample Co, Parent: Income Statement, Name: Revenue, Has Children: True>], 21: [<Dimension: id: 24, Company: Sample Co, Parent: General & Administrative, Name: Finance & Accounting, Has Children: False>, <Dimension: id: 23, Company: Sample Co, Parent: General & Administrative, Name: Human Resources, Has Children: False>, <Dimension: id: 22, Company: Sample Co, Parent: General & Administrative, Name: Operations, Has Children: False>], 16: [<Dimension: id: 21, Company: Sample Co, Parent: All Departments, Name: General & Administrative, Has Children: True>, <Dimension: id: 17, Company: Sample Co, Parent: All Departments, Name: Marketing, Has Children: False>, <Dimension: id: 18, Company: Sample Co, Parent: All Departments, Name: Product, Has Children: True>], 3: [<Dimension: id: 4, Company: Sample Co, Parent: Revenue, Name: Product Revenue, Has Children: False>, <Dimension: id: 5, Company: Sample Co, Parent: Revenue, Name: Services Revenue, Has Children: False>]}
+
+
+top_level_dimensions [
+    <Dimension: id: 1, Company: Sample Co, Parent: None, Name: Account, Has Children: True>,
+    <Dimension: id: 15, Company: Sample Co, Parent: None, Name: Department, Has Children: True>,
+    <Dimension: id: 12, Company: Sample Co, Parent: None, Name: Scenario, Has Children: True>]

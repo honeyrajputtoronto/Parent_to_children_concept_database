@@ -1,10 +1,12 @@
 from .models import Company, Dimension
-from django.db.models import Prefetch
+from django.core.cache import cache
+import json
+from django.db import connection
 
 
-def collect_parent_to_children(all_dimension):
+def collect_parent_to_children(all_dimensions):
     parent_to_children = {}
-    for dimension in all_dimension:
+    for dimension in all_dimensions:
         parent_id = dimension.parent_id
         if parent_id not in parent_to_children:
             parent_to_children[parent_id] = []
@@ -28,28 +30,21 @@ def traverse(dimensions, parent_to_children, level=0):
 
 def list_children(root_id):
     try:
-        root_dimension = Dimension.objects.select_related('parent','company').get(id=root_id)
-        all_dimension = Dimension.objects.select_related('parent','company').all()
-        parent_to_children = collect_parent_to_children(all_dimension)
+        root_dimension = Dimension.objects.select_related('parent', 'company').get(id=root_id)
+        all_dimensions = Dimension.objects.select_related('parent', 'company').all()
+        parent_to_children = collect_parent_to_children(all_dimensions)
         result = traverse(root_dimension, parent_to_children)
         return result
-
     except Dimension.DoesNotExist:
-        print('Root Dimension does not exist. ')
         return None
 
 
 def list_hierarchy(root_id):
     try:
-        company = Company.objects.get(id=root_id)
-        dimensions = Dimension.objects.filter(company=company).select_related('parent','company')
+        dimensions = Dimension.objects.filter(company=root_id).select_related('parent', 'company')
         parent_to_children = collect_parent_to_children(dimensions)
-        top_level_dimensions = [dim for dim in dimensions if dim.parent_id== None]
+        top_level_dimensions = [dim for dim in dimensions if dim.parent_id is None]
         result = traverse(top_level_dimensions, parent_to_children)
         return result
-
-    except company.DoesNotExist:
-        print('COmpany does not exist')
+    except Company.DoesNotExist:
         return None
-
-
