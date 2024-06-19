@@ -1,9 +1,21 @@
 # Define the dimensions data
 dimensions = [
-    {"model": "dimensions.dimension", "pk": 1, "fields": {"company": 1, "parent": None, "name": "Account", "has_children": True}},
-    {"model": "dimensions.dimension", "pk": 2, "fields": {"company": 1, "parent": 1, "name": "Income Statement", "has_children": True}},
-    {"model": "dimensions.dimension", "pk": 3, "fields": {"company": 1, "parent": 2, "name": "Revenue", "has_children": True}},
-    {"model": "dimensions.dimension", "pk": 4, "fields": {"company": 1, "parent": 3, "name": "Product Revenue", "has_children": False}},
+    {"model": "dimensions.dimension", "pk": 1, "fields": {
+        "company": 1, "parent": None, "name": "Account", "has_children": True
+        }
+     },
+    {"model": "dimensions.dimension", "pk": 2, "fields":
+        {"company": 1, "parent": 1, "name": "Income Statement", "has_children": True
+         }
+        },
+    {"model": "dimensions.dimension", "pk": 3, "fields":
+        {"company": 1, "parent": 2, "name": "Revenue", "has_children": True
+         }
+        },
+    {"model": "dimensions.dimension", "pk": 4, "fields":
+        {"company": 1, "parent": 3, "name": "Product Revenue", "has_children": False
+         }
+        },
     {"model": "dimensions.dimension", "pk": 5, "fields": {"company": 1, "parent": 3, "name": "Services Revenue", "has_children": False}},
     {"model": "dimensions.dimension", "pk": 6, "fields": {"company": 1, "parent": 2, "name": "Expense", "has_children": False}},
     {"model": "dimensions.dimension", "pk": 7, "fields": {"company": 1, "parent": 2, "name": "Net Income", "has_children": False}},

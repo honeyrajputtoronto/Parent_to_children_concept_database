@@ -47,4 +47,4 @@ class Command(BaseCommand):
             print(f'\n Incorrect response.\n - EXPECTED: {expected}\n - RECEIVED: {response}\n---\nRESULTS: Fail.')
         else:
             print(f'\n{len(response)} out of {len(expected)} correct.\n---\nRESULTS: Success.')
-            # print(f'\n Correct response.\n - EXPECTED: {expected}\n - RECEIVED: {response}\n---\nRESULTS: Success.')
+            print(f'\n Correct response.\n - EXPECTED: {expected}\n - RECEIVED: {response}\n---\nRESULTS: Success.')
